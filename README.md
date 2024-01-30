@@ -15,7 +15,7 @@ Welcome to the Weather App project! This is a simple Single Page Application (SP
 
 - [OpenWeatherMap API](https://openweathermap.org/api)
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-- [Weather Icons](https://erikflowers.github.io/weather-icons/)
+- [Weather Icons](https://fontawesome.com/)
 - [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
 
 ## How to Use
