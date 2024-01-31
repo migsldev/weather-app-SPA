@@ -17,7 +17,7 @@ body {
 .container {
     position: relative;
     width: 400px;
-    height: 605px;
+    height: 105px;
     background:  #ffff;
     padding: 29px 32px;
     overflow: hidden; /* hide overflow content */
@@ -154,4 +154,42 @@ body {
 
 /* Location not found */
 
+.not-found{
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    scale: 0;
+    opacity: 0;
+    display: none;
+}
 
+.not-found img{
+    width: 70%;
+
+}
+
+.not-found p{
+    color: #06283D;
+    font: 22px;
+    font-weight: 500px;
+    margin-top: 12px;
+}
+
+/* Animations */
+.weather-box, .weather-details {
+    scale: 0;
+    opacity: 0;
+
+}
+
+.fade-in{
+    animation: 0.5s fadeIn forwards;
+    animation-delay: 0.5s;
+}
+
+/* @keyframes fadeIn{
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+} */
