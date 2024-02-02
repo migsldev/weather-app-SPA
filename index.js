@@ -14,6 +14,28 @@ const wind = document.querySelector('.weather-details .wind span');
 const toggleModeBtn = document.getElementById('toggleMode');
 const body = document.body;
 
+// Event listener for Enter key press in the search input
+
+document.querySelector('.search-box input').addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        search.click();
+    }
+});
+
+// event listener for light and dark mode
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.container');
+    const toggleMode = document.getElementById('toggleMode');
+
+    toggleMode.addEventListener('change', () => {
+        if (toggleMode.checked) {
+            container.classList.add('dark-mode');
+        } else {
+            container.classList.remove('dark-mode');
+        }
+    });
+});
+
 search.addEventListener('click', () => {
 
     const APIKey = '5c7a95fa6e3ec618a37a2f508957c4bb';
@@ -81,26 +103,4 @@ search.addEventListener('click', () => {
         });
 
 
-});
-
-// Event listener for Enter key press in the search input
-
-document.querySelector('.search-box input').addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        search.click();
-    }
-});
-
-// event listener for light and dark mode
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.container');
-    const toggleMode = document.getElementById('toggleMode');
-
-    toggleMode.addEventListener('change', () => {
-        if (toggleMode.checked) {
-            container.classList.add('dark-mode');
-        } else {
-            container.classList.remove('dark-mode');
-        }
-    });
 });

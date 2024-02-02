@@ -17,13 +17,13 @@ body {
 .container {
     position: relative;
     width: 400px;
-    height: 116px;
+    height: 115px;
     background:  #ffff;
-    padding: 29px 32px;
+    padding: 30px 32px;
     overflow: hidden; /* hide overflow content */
     border-radius: 18px;
     font-family: 'Roboto' sans-serif;
-    transition: 0.5s ease-out;
+    transition: 0.8s ease-out;
 
 }
 
@@ -34,6 +34,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 
 }
 
@@ -51,6 +52,7 @@ body {
     font-weight: 500;
     color: #06283D;
     text-transform: capitalize;
+    padding-left: 6px;
 }
 
 .search-box button{
@@ -73,6 +75,11 @@ body {
     position: absolute;
     color: #06283D;
     font-size: 28px;
+    background-color: inherit; /* Add this line */
+    border-radius: 50%; /* Add this line */
+    padding: 6px; /* Adjust this value as needed */
+    top: 50%; /* Adjust this value as needed */
+    transform: translateY(-50%); /* Adjust this value as needed */
 }
 
 
@@ -156,7 +163,32 @@ body {
 .dark-mode {
     background-color: #222;
     color: #fff;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
+
+.container, .container.dark-mode {
+    transition: background-color 0.5s ease, color 0.5s ease; /* Add transition for background color and text color */
+}
+
+.dark-mode .container {
+    background-color: #222; /* Change to desired dark mode background color */
+}
+
+.dark-mode .search-box input::placeholder,
+.dark-mode .search-box input {
+    color: white; /* Change to white font color in dark mode */
+    background-color: #222; /* Change to desired dark mode input background color */
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+
+.dark-mode .search-box i {
+    background-color: #222; /* Change to desired dark mode color */
+    color: white; /* Change to desired dark mode color */
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+/* toggle switch */
 .switch {
     position: relative;
     display: inline-block;
@@ -197,11 +229,11 @@ body {
   }
   
   input:checked + .slider {
-    background-color: #06283D;
+    background-color: #222;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #06283D;
+    box-shadow: 0 0 1px #222;
   }
   
   input:checked + .slider:before {
@@ -216,11 +248,22 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white; 
+    font-family: 'Roboto' sans-serif;
     font-size: 12px; 
     pointer-events: none; 
   }
   
-  
+.dark-mode .weather-details span,
+.dark-mode .weather-details p,
+.dark-mode .weather-box .temperature,
+.dark-mode .weather-box .description,
+.dark-mode .not-found p {
+    color: white; /* Change to white font color in dark mode */
+}
+
+.dark-mode .weather-details i {
+    color: white; /* Change to white font color in dark mode */
+}
 
 
 /* Location not found */
