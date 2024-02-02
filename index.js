@@ -14,28 +14,6 @@ const wind = document.querySelector('.weather-details .wind span');
 const toggleModeBtn = document.getElementById('toggleMode');
 const body = document.body;
 
-// Event listener for Enter key press in the search input
-
-document.querySelector('.search-box input').addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        search.click();
-    }
-});
-
-// event listener for light and dark mode
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.container');
-    const toggleMode = document.getElementById('toggleMode');
-
-    toggleMode.addEventListener('change', () => {
-        if (toggleMode.checked) {
-            container.classList.add('dark-mode');
-        } else {
-            container.classList.remove('dark-mode');
-        }
-    });
-});
-
 search.addEventListener('click', () => {
 
     const APIKey = '5c7a95fa6e3ec618a37a2f508957c4bb';
@@ -60,33 +38,35 @@ search.addEventListener('click', () => {
             error404.style.display = 'none';
             error404.classList.remove('fadeIn');
 
+            let cloudPresent = json.weather.some(weatherItem => weatherItem.main.toLowerCase().includes('cloud'));
+
+            if(cloudPresent) {
+                image.src = 'images/cloud.png';
+            } else {
             
-            json.weather.forEach(weatherItem => {
-                switch (json.weather[0].main) {
-                    case 'Clear':
-                        image.src = 'images/clear.png';
-                        break;
+                json.weather.forEach(weatherItem => {
+                    switch (json.weather[0].main) {
+                        case 'Clear':
+                            image.src = 'images/clear.png';
+                            break;
 
-                    case 'Rain':
-                        image.src = 'images/rain.png';
-                        break;
+                        case 'Rain':
+                            image.src = 'images/rain.png';
+                            break;
 
-                    case 'Snow':
-                        image.src = 'images/snow.png';
-                        break;
+                        case 'Snow':
+                            image.src = 'images/snow.png';
+                            break;
 
-                    case 'Cloud':
-                        image.src = 'images/cloud.png';
-                        break;
+                        case 'Haze':
+                            image.src = 'images/mist.png';
+                            break;
 
-                    case 'Haze':
-                        image.src = 'images/mist.png';
-                        break;
-
-                    default:
-                        image.src = '';
-                }
-            });
+                        default:
+                            image.src = '';
+                    }
+                });
+            }
 
             temperature.innerHTML = `${parseInt(json.main.temp)}°C`;
             description.innerHTML = `${json.weather[0].description}`;
@@ -103,4 +83,25 @@ search.addEventListener('click', () => {
         });
 
 
+});
+
+// Event listener for Enter key press in the search input
+
+document.querySelector('.search-box input').addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        search.click();
+    }
+});
+
+// event listener for light and dark mode
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleMode = document.getElementById('toggleMode');
+
+    toggleMode.addEventListener('change', () => {
+        if (toggleMode.checked) {
+            container.classList.add('dark-mode');
+        } else {
+            container.classList.remove('dark-mode');
+        }
+    });
 });
