@@ -17,7 +17,7 @@ body {
 .container {
     position: relative;
     width: 400px;
-    height: 115px;
+    height: 120px;
     background:  #ffff;
     padding: 30px 32px;
     overflow: hidden; /* hide overflow content */
@@ -194,6 +194,9 @@ body {
     display: inline-block;
     width: 60px;
     height: 34px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 17px;
   }
   
   .switch input { 
@@ -212,7 +215,7 @@ body {
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-    border-radius: 34px;
+    border-radius: 17px;
   }
   
   .slider:before {
@@ -226,6 +229,7 @@ body {
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
   input:checked + .slider {
