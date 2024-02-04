@@ -11,8 +11,16 @@
     <div class="container">
         <div class="search-box">
             <i class="fa-solid fa-location-dot"></i> <!-- location map icon -->
-            <input type="text" placeholder="Enter your location">
-            <button class="fa-solid fa-magnifying-glass"></button>
+            <input type="text" id="city" placeholder="Enter your location">
+            <button class="fa-solid fa-magnifying-glass" onclick="getWeather()"></button>
+
+            <img id="weather-icon" alt="">
+
+            <div id="temp-div"></div>
+
+            <div id="weather-info"></div>
+
+            <div id="hourly-forecast"></div>
         </div>
 
           <!-- Toggle Light and Dark Mode-->
@@ -23,37 +31,12 @@
             <!-- <span class="mode-text">Light/Dark</span> -->
         </label>
         
-        <!-- wrong user input -->
-        <div class="not-found">
-            <img src="./images/404.png" alt="404 error">
-            <p>Oops! Location not found.</p>
-        </div>
-
-        <div class="weather-box">
-            <img src="" alt="">
-            <p class="temperature"></p>
-            <p class="description"></p>
-        </div>
-
-        <div class="weather-details">
-            <div class="humidity">
-                <i class="fa-solid fa-water"></i>
-                <div class="text">
-                    <span></span>
-                    <p>Humidity</p>
-                </div>
-            </div>
-            <div class="wind">
-                <i class="fa-solid fa-wind"></i>
-                <div class="text">
-                    <span></span>
-                    <p>Wind Speed</p>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="https://kit.fontawesome.com/6a2af8d8c1.js" crossorigin="anonymous"></script> <!-- Font Awesome for icons-->
     <script src="./index.js"></script>
 </body>
 </html>
+
+
+
