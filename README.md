@@ -6,18 +6,19 @@ Welcome to the Weather App project! This is a simple Single Page Application (SP
 
 - **City Search:** Users can type the name of a city in the search bar to get the current weather conditions dynamically.
 - **Extended Weather Details:** When a user selects a city from the search results, additional details such as humidity, wind speed, and other relevant information are provided.
-- **Temperature Unit Toggle:** Users can switch between Celsius and Fahrenheit for temperature display.
-- **Dynamic Backgrounds:** The background or color theme of the application changes based on the current weather conditions.
+<!-- - **Temperature Unit Display:** Users can switch between Celsius and Fahrenheit for temperature display. -->
+- **Dark mode:** Users can switch between Light and Dark Mode.
+- **24 hour forecast:** Users can see the hourly forecast for the next 24 hours
 - **Asynchronous API Communication:** Weather data is fetched asynchronously from the OpenWeatherMap API to ensure responsiveness.
-- **Event Listeners:** Implemented event listeners for real-time weather results, displaying extended weather details, and toggling temperature units.
+- **Event Listeners:** Implemented event listeners for real-time weather results, displaying extended weather details, and toggling Darkmode.
 
 ## Resources
 
 - [OpenWeatherMap API](https://openweathermap.org/api)
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 - [Location Icons](https://fontawesome.com/)
-- [Weather Icons](https://github.com/erikflowers/weather-icons)
-- [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
+<!-- - [Weather Icons](https://github.com/erikflowers/weather-icons) -->
+<!-- - [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API) -->
 
 ## How to Use
 
