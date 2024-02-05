@@ -2,11 +2,9 @@ const container = document.querySelector('.container');
 
 const toggleModeBtn = document.getElementById('toggleMode');
 const body = document.body;
+const APIKey = '5c7a95fa6e3ec618a37a2f508957c4bb';
 
 function getWeather() {
-
-
-    const APIKey = '5c7a95fa6e3ec618a37a2f508957c4bb';
     const city = document.getElementById('city').value;
 
     if (!city){
@@ -97,7 +95,7 @@ function displayWeather(data) {
 function displayHourlyForecast(hourlyData) {
 
     const hourlyForecastDiv = document.getElementById('hourly-forecast');
-    const next24Hours = hourlyData.slice(0, 8); // displaying the hourly forecast in 3 hour intervals -> slice the 24 hour data, extracts the first 8 items 
+    const next24Hours = hourlyData.slice(0, 24); // displaying the hourly forecast in 3 hour intervals -> slice the 24 hour data, extracts the first 8 items 
 
     //iterate over each hourly data and create content to display 
         //using a forEach loop to iterate in the next25Hours array
@@ -129,6 +127,42 @@ function showImage() {
     const weatherIcon = document.getElementById('weather-icon');
     weatherIcon.style.display = 'block'; //changing the css style for the weatherIcon div in html
 }
+
+// Add geolocation functionality before or after your existing code
+
+// Geolocation functions
+function getWeatherByGeolocation() {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            // Call a function to fetch weather using latitude and longitude
+            getWeatherByCoordinates(latitude, longitude);
+        }, (error) => {
+            console.error("Error getting geolocation:", error);
+            alert("Error getting your location. Please try again or enter your city manually.");
+        });
+    } else {
+        console.error("Geolocation is not supported by your browser");
+        alert("Geolocation is not supported by your browser. Please enter your city manually.");
+    }
+}
+
+function getWeatherByCoordinates(latitude, longitude) {
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${latitude}&lon=${longitude}&appid=${APIKey}`;
+
+    fetch(weatherUrl)
+        .then(response => response.json())
+        .then(data => {
+            displayWeather(data);
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            alert('Error fetching weather data. Please try again.');
+        });
+    
+}
+getWeatherByGeolocation();
 
 // Event listener for click in the search input
 document.querySelector('.search-box input').addEventListener('click', (event) => {
