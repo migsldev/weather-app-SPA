@@ -1,0 +1,30 @@
+{
+    "cities": [
+      {
+        "cityName": "New York",
+        "temperature": 20,
+        "description": "Sunny"
+      },
+      {
+        "cityName": "London",
+        "temperature": 15,
+        "description": "Cloudy"
+      },
+      {
+        "cityName": "Tokyo",
+        "temperature": 25,
+        "description": "Rainy"
+      },
+      {
+        "cityName": "Paris",
+        "temperature": 18,
+        "description": "Partly cloudy"
+      },
+      {
+        "cityName": "Sydney",
+        "temperature": 22,
+        "description": "Windy"
+      }
+    ]
+  }
+  
