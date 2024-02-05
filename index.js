@@ -65,7 +65,7 @@ function displayWeather(data) {
     } else {
         const cityName = data.name;
         const temperature = parseInt(data.main.temp); // converts to Celsius
-        const description = data.weather[0].description;
+        const description = data.weather[0].description.toUpperCase();
         const iconCode = data.weather[0].icon;
         const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
 
