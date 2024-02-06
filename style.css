@@ -6,7 +6,6 @@
     box-sizing: border-box;
 }
 
-/* new version */
 body {
     height: 100vh;
     display: flex;
@@ -43,18 +42,15 @@ input {
     padding:  8px;
     box-sizing: border-box;
     border-radius: 10px;
-    /* border: 1px solid white; */
     margin-top: 20px;
     font-size: 20px;
 }
-
 
 /*search button*/
 button {
     background: #06283D;
     color: #fff;
     padding: 10px;
-    /* border: 1px solid white; */
     border-radius: 10px;
     cursor: pointer;
     margin-top: 20px;
@@ -134,7 +130,7 @@ button.fa-solid.fa-magnifying-glass:hover {
 /* light and dark mode */
 .dark-mode {
     background: linear-gradient(to bottom, #555, #111);
-    color: #fff;
+    /* color: #fff; */
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
@@ -147,15 +143,22 @@ button.fa-solid.fa-magnifying-glass:hover {
 }
 
 .dark-mode .search-box input::placeholder, .dark-mode .hourly-item, 
-.dark-mode #temp-div p, .dark-mode #weather-info p, .dark-mode label p,
+.dark-mode #temp-div p, .dark-mode #weather-info p, .fa-solid.fa-location-dot, 
+.dark-mode label p,
 .dark-mode .search-box input{
     color: white; 
     background-color: linear-gradient(to bottom, #555, #111);
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
+.dark-mode .search-box input {
+    color: black; 
+    background: #555;
+}
 
-.dark-mode .search-box i {
+
+
+.dark-mode .search-box i{
     background-color: #222; 
     color: white; 
     transition: color 0.5s ease, background-color 0.5s ease;
@@ -187,7 +190,7 @@ button.fa-solid.fa-magnifying-glass:hover {
 
 .dark-mode button.fa-solid.fa-magnifying-glass:hover {
     background: #eee;
-    color: #111;
+    color: #222;
 }
 
 /* toggle switch */
@@ -265,11 +268,11 @@ input:checked + .slider {
 .dark-mode .weather-box .temperature,
 .dark-mode .weather-box .description,
 .dark-mode {
-    color: white; /* Change to white font color in dark mode */
+    color: white; 
 }
 
 .dark-mode .weather-details i {
-    color: white; /* Change to white font color in dark mode */
+    color: white; 
 }
 
 

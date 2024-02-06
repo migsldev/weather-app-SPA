@@ -40,13 +40,7 @@ function getWeather() {
                 console.error('Error fetching current weather data:', error);
                 alert('Error fetching current weather data. Please try again.');
             });
-
-    
 }
-
-//display the weather data based from the API
-    // take weather data, extracts weather information, updates the HTML elements, 
-    //displays error message if there is an issue with API request
 
 //display current weather
 function displayWeather(data) {
@@ -64,7 +58,7 @@ function displayWeather(data) {
         weatherInfoDiv.innerHTML = `<p>${data.message}</p>`
     } else {
         const cityName = data.name;
-        const temperature = parseInt(data.main.temp); // converts to Celsius
+        const temperature = parseInt(data.main.temp);
         const description = data.weather[0].description.toUpperCase();
         const iconCode = data.weather[0].icon;
         const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
@@ -79,27 +73,17 @@ function displayWeather(data) {
         weatherIcon.src = iconUrl
         weatherIcon.alt = description;
 
-
-        //shows the weather icon visible
-            // will occur 
         showImage();
 
     }
 }
 
 //display hourly forecast
-    //takes the hourly weather
-    //extracts the relevant information of 24 hours
-    //creates element each hour
-    //updated in the hourlyForecastDiv
 function displayHourlyForecast(hourlyData) {
 
     const hourlyForecastDiv = document.getElementById('hourly-forecast');
-    const next24Hours = hourlyData.slice(0, 24); // displaying the hourly forecast in 3 hour intervals -> slice the 24 hour data, extracts the first 8 items 
+    const next24Hours = hourlyData.slice(0, 24);
 
-    //iterate over each hourly data and create content to display 
-        //using a forEach loop to iterate in the next25Hours array
-            // for each item it extracts the time, temp in celsius, weather icon code 
     next24Hours.forEach(item => {
         const dateTime = new Date(item.dt * 1000);
         const hour = dateTime.getHours();
@@ -115,9 +99,7 @@ function displayHourlyForecast(hourlyData) {
             <span>${temperature}°C</span>
         </div>`;
 
-        //append the created hourlyItemHtml to the hourlyForecastDiv
         hourlyForecastDiv.innerHTML += hourlyItemHtml;
-
 
     });
 }
@@ -125,10 +107,8 @@ function displayHourlyForecast(hourlyData) {
 //displaying the weather icon
 function showImage() {
     const weatherIcon = document.getElementById('weather-icon');
-    weatherIcon.style.display = 'block'; //changing the css style for the weatherIcon div in html
+    weatherIcon.style.display = 'block';
 }
-
-// Add geolocation functionality before or after your existing code
 
 // Geolocation functions
 function getWeatherByGeolocation() {
@@ -136,10 +116,10 @@ function getWeatherByGeolocation() {
         navigator.geolocation.getCurrentPosition((position) => {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
-            // Call a function to fetch weather using latitude and longitude
+            
             getWeatherByCoordinates(latitude, longitude);
-        }, (error) => {
-            console.error("Error getting geolocation:", error);
+        }, (error) => { 
+            console.error("Error getting geolocation:", error); //error message if location is not found
             alert("Error getting your location. Please try again or enter your city manually.");
         });
     } else {
