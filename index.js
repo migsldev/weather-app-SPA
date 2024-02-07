@@ -4,7 +4,7 @@ const toggleModeBtn = document.getElementById('toggleMode');
 const body = document.body;
 const APIKey = '5c7a95fa6e3ec618a37a2f508957c4bb';
 
-function getWeather() {
+function getWeatherForecast() {
     const city = document.getElementById('city').value;
 
     if (!city){
