@@ -153,7 +153,7 @@ document.querySelector('.search-box input').addEventListener('click', (event) =>
 
 document.querySelector('.search-box input').addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-        getWeather();
+        getWeatherForecast();
     }
 });
 
