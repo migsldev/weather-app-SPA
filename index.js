@@ -1,8 +1,54 @@
-const container = document.querySelector('.container');
 
+// event listener for light and dark mode
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleMode = document.getElementById('toggleMode');
+
+    toggleMode.addEventListener('change', () => {
+        if (toggleMode.checked) {
+            container.classList.add('dark-mode');
+        } else {
+            container.classList.remove('dark-mode');
+        }
+    });
+
+// Event listener for click in the search input
+    document.querySelector('.search-box input').addEventListener('click', (event) => {
+        search.click();
+    });
+
+    // Event listener for Enter key press in the search input
+
+    document.querySelector('.search-box input').addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            getWeatherForecast();
+        }
+    });
+
+    getWeatherByGeolocation();
+});
+
+const container = document.querySelector('.container');
 const toggleModeBtn = document.getElementById('toggleMode');
 const body = document.body;
-const APIKey = '5c7a95fa6e3ec618a37a2f508957c4bb';
+const APIKey = 'config.myKey';
+
+// Geolocation functions
+function getWeatherByGeolocation() {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            
+            getWeatherByCoordinates(latitude, longitude);
+        }, (error) => { 
+            console.error("Error getting geolocation:", error); //error message if location is not found
+            alert("Error getting your location. Please try again or enter your city manually.");
+        });
+    } else {
+        console.error("Geolocation is not supported by your browser");
+        alert("Geolocation is not supported by your browser. Please enter your city manually.");
+    }
+}
 
 function getWeatherForecast() {
     const city = document.getElementById('city').value;
@@ -55,23 +101,23 @@ function displayWeather(data) {
     tempDivInfo.innerHTML = "";
 
     if (data.cod === '404') {
-        weatherInfoDiv.innerHTML = `<p>${data.message}</p>`
+        weatherInfoDiv.innerHTML = `<p>${data.message}</p>` // checks response code if city found
     } else {
-        const cityName = data.name;
+        const cityName = data.name.toUpperCase();
         const temperature = parseInt(data.main.temp);
-        const description = data.weather[0].description.toUpperCase();
+        const description = data.weather[0].description;
         const iconCode = data.weather[0].icon;
         const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
 
         const temperatureHTML = `<p>${temperature}°C</p>`;
         const weatherHTML = `
-            <p>${cityName}</p>
-            <p>${description}</p>`;
+            <p>${description}</p>
+            <p><strong>${cityName}</strong></p>`;
 
-        tempDivInfo.innerHTML = temperatureHTML;
-        weatherInfoDiv.innerHTML = weatherHTML;
-        weatherIcon.src = iconUrl
-        weatherIcon.alt = description;
+        tempDivInfo.innerHTML = temperatureHTML; //display temp
+        weatherInfoDiv.innerHTML = weatherHTML; //display city name
+        weatherIcon.src = iconUrl //display icons
+        weatherIcon.alt = description; //display weather description
 
         showImage();
 
@@ -110,23 +156,6 @@ function showImage() {
     weatherIcon.style.display = 'block';
 }
 
-// Geolocation functions
-function getWeatherByGeolocation() {
-    if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-            
-            getWeatherByCoordinates(latitude, longitude);
-        }, (error) => { 
-            console.error("Error getting geolocation:", error); //error message if location is not found
-            alert("Error getting your location. Please try again or enter your city manually.");
-        });
-    } else {
-        console.error("Geolocation is not supported by your browser");
-        alert("Geolocation is not supported by your browser. Please enter your city manually.");
-    }
-}
 
 function getWeatherByCoordinates(latitude, longitude) {
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${latitude}&lon=${longitude}&appid=${APIKey}`;
@@ -142,30 +171,3 @@ function getWeatherByCoordinates(latitude, longitude) {
         });
     
 }
-getWeatherByGeolocation();
-
-// Event listener for click in the search input
-document.querySelector('.search-box input').addEventListener('click', (event) => {
-    search.click();
-});
-
-// Event listener for Enter key press in the search input
-
-document.querySelector('.search-box input').addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        getWeatherForecast();
-    }
-});
-
-// event listener for light and dark mode
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleMode = document.getElementById('toggleMode');
-
-    toggleMode.addEventListener('change', () => {
-        if (toggleMode.checked) {
-            container.classList.add('dark-mode');
-        } else {
-            container.classList.remove('dark-mode');
-        }
-    });
-});
